@@ -1,7 +1,9 @@
-{-# LANGUAGE OverloadedStrings, TupleSections, BlockArguments, LambdaCase #-}
+{-# LANGUAGE OverloadedStrings, LambdaCase, NoImplicitPrelude #-}
 module Day1 where
 
 import Common ( Parser, getInput, printOutput, lexeme )
+import Prelude ( IO, Int, (.), (>), (+), quot, (<$>), sum, subtract )
+import Data.Text.IO ( putStrLn )
 import Control.Monad ( join )
 import Text.Megaparsec ( many )
 import Text.Megaparsec.Char.Lexer ( decimal )
