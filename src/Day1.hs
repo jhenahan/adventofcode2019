@@ -3,10 +3,7 @@ module Day1 where
 
 import Parser ( Parser, number )
 import Solver
-import Prelude ( IO, Int, (.), (>), (+), quot, (<$>), sum, subtract )
-import Control.Monad ( join, (=<<) )
-import Text.Megaparsec ( many )
-import Data.Functor.Foldable ( hylo, ListF(..) )
+import AOC.Prelude
 
 main :: IO ()
 main = printProblem =<< runProblem 1 [part1, part2]

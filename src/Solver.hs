@@ -1,14 +1,8 @@
-{-# LANGUAGE TypeOperators, RecordWildCards, OverloadedStrings #-}
+{-# LANGUAGE TypeOperators, RecordWildCards, OverloadedStrings, NoImplicitPrelude #-}
 module Solver where
 
-import Prelude hiding (putStrLn, readFile)
+import AOC.Prelude
 import Parser
-import Data.Text (Text)
-import Data.Text.IO (putStrLn, readFile)
-import Text.Megaparsec hiding (getInput)
-import Data.Text.Prettyprint.Doc
-import Data.Text.Prettyprint.Doc.Render.Text
-import Data.Text.Prettyprint.Doc.Render.String
 
 data a :~> b = Solution
   { parser  :: Parser a
@@ -18,7 +12,7 @@ data a :~> b = Solution
 newtype Parts = Parts { unparts :: [Text] }
 
 instance Pretty Parts where
-  pretty = align . vsep . map pretty . unparts
+  pretty = align . vsep . fmap pretty . unparts
 
 data Problem = Problem
   { day :: Int
