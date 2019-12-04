@@ -17,15 +17,16 @@ maintainer:          root@proofte.ch
 extra-source-files:  CHANGELOG.md
 
 library
-  exposed-modules: Day1, Day2
-  other-modules: Parser, Solver, AOC.Prelude
+  exposed-modules: Day1, Day2, Day3, Solver
+  other-modules: Parser, AOC.Prelude
   -- other-extensions:
   build-depends:       base ^>=4.12.0.0,
                        text,
                        megaparsec,
                        recursion-schemes,
                        prettyprinter,
-                       nonempty-containers
+                       nonempty-containers,
+                       deepseq
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options: -Wall -Werror -O2
@@ -41,5 +42,14 @@ executable aoc2019
                        adventofcode2019
   hs-source-dirs:      app
   default-language:    Haskell2010
+  ghc-options: -Wall -Werror -O2
+
+benchmark aoc
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  hs-source-dirs: bench
+  build-depends: base ^>= 4.12.0.0,
+                 criterion,
+                 adventofcode2019
   ghc-options: -Wall -Werror -O2
 

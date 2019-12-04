@@ -1,15 +1,19 @@
-{-# LANGUAGE TypeOperators, RecordWildCards, OverloadedStrings, NoImplicitPrelude #-}
+{-# LANGUAGE RecordWildCards, DeriveGeneric #-}
 module Solver where
 
 import AOC.Prelude
 import Parser
+import Control.DeepSeq
+import GHC.Generics
 
 data a :~> b = Solution
   { parser  :: Parser a
   , solver  :: a -> b
   }
 
-newtype Parts = Parts { unparts :: [Text] }
+newtype Parts = Parts { unparts :: [Text] } deriving Generic
+
+instance NFData Parts
 
 instance Pretty Parts where
   pretty = align . vsep . fmap pretty . unparts
@@ -17,7 +21,9 @@ instance Pretty Parts where
 data Problem = Problem
   { day :: Int
   , parts :: Parts
-  }
+  } deriving Generic
+
+instance NFData Problem
 
 instance Pretty Problem where
   pretty Problem{..} = pretty ("Day " :: Text) <>
