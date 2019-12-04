@@ -1,4 +1,3 @@
-{-# LANGUAGE OverloadedStrings, LambdaCase, NoImplicitPrelude, TypeOperators #-}
 module Day1 where
 
 import Parser ( Parser, number )

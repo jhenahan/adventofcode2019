@@ -4,8 +4,8 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, megaparsec, prettyprinter
-      , recursion-schemes, stdenv, text
+  f = { mkDerivation, base, megaparsec, nonempty-containers
+      , prettyprinter, recursion-schemes, stdenv, text
       }:
       mkDerivation {
         pname = "adventofcode2019";
@@ -14,7 +14,8 @@ let
         isLibrary = true;
         isExecutable = true;
         libraryHaskellDepends = [
-          base megaparsec prettyprinter recursion-schemes text
+          base megaparsec nonempty-containers prettyprinter recursion-schemes
+          text
         ];
         executableHaskellDepends = [ base ];
         license = stdenv.lib.licenses.bsd3;
